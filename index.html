@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Let me complete</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="form">
+            <div class="form-control">
+                <textarea name="access-key" id="access-key"  rows="3" placeholder="Enter access key"></textarea>
+            </div>
+            <div class="form-control access-form-save">
+                <input type="button" value="Save" id="save">
+            </div>
+            
+        </div>
+        <h1>Let me complete...</h1>
+        <div class="form query-form">
+            <div class="form-control">
+                <textarea name="query" id="query" placeholder="Type in a partial sentence, let me complete it"  rows="3"></textarea>
+            </div>
+            <div class="form-control">
+                <input type="button" value="Complete" id="ask">
+            </div>
+        </div>
+        <div class="response-container">
+            <p id="response-p"><span id="prompt"></span> <span id="response"></span><span id="error"></span></p>
+        </div>
+    </div>
+
+</body>
+<script src="script.js"></script>
+
+</html>
