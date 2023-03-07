@@ -40,7 +40,7 @@ function search() {
                 'Content-Type': 'application/json',
                 'Authorization': `Bearer ${accessKey}`,
             },
-            body: JSON.stringify({ "model": "text-davinci-003", "prompt": prompt, "temperature": 0, "max_tokens": 7 })
+            body: JSON.stringify({ "model": "text-davinci-003", "prompt": prompt, "temperature": 0, "max_tokens": 300 })
         })
             .then(response => response.json())
             .then(data => {
