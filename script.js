@@ -22,17 +22,17 @@ function getAccessKey() {
 }
 
 function search() {
-    let accessKey = accessKeyElement.value;
+    promptElement.innerHTML = "";
+    responseElement.innerHTML = "";
+    errorElement.innerHTML = "";
+    let accessKey = accessKeyElement.value?.trim();
     if (!accessKey) {
         errorElement.innerHTML = `Please enter access key. You can find it <a href="https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key" target="_blank">here</a>.`;
-        // return;
+        return;
     }
-    let prompt = queryElement.value;
+    let prompt = queryElement.value?.trim();
     if (prompt) {
         ask.disabled = true;
-        promptElement.innerHTML = "";
-        responseElement.innerHTML = "";
-        errorElement.innerHTML = "";
         responsePElement.classList.add('loading');
         fetch(' https://api.openai.com/v1/completions', {
             method: 'POST',
@@ -56,6 +56,8 @@ function search() {
                     errorElement.innerHTML = "Ugh!!! " + "Something went wrong. Please try again later.";
                 }
             );
+    } else {
+        errorElement.innerHTML = "Please provide a partial sentence to complete";
     }
 
 }
@@ -71,6 +73,15 @@ function pwa() {
                     console.log('Service worker registration failed:', error);
                 });
         });
+    }
+}
+
+queryElement.onkeyup = function (e) {
+    if (e.key == "Enter" ||
+        e.code == "Enter" ||
+        e.keyCode == 13
+    ) {
+        search();
     }
 }
 
