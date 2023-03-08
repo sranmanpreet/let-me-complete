@@ -12,8 +12,8 @@ saveButton.addEventListener("click", saveAccessKey);
 
 function saveAccessKey() {
     let accessKey = accessKeyElement.value;
-    if(accessKey){
-       localStorage.setItem("ak", accessKey); 
+    if (accessKey) {
+        localStorage.setItem("ak", accessKey);
     }
 }
 
@@ -23,9 +23,9 @@ function getAccessKey() {
 
 function search() {
     let accessKey = accessKeyElement.value;
-    if(!accessKey){
+    if (!accessKey) {
         errorElement.innerHTML = `Please enter access key. You can find it <a href="https://help.openai.com/en/articles/4936850-where-do-i-find-my-secret-api-key" target="_blank">here</a>.`;
-       // return;
+        // return;
     }
     let prompt = queryElement.value;
     if (prompt) {
@@ -60,4 +60,20 @@ function search() {
 
 }
 
+function pwa() {
+    if ('serviceWorker' in navigator) {
+        window.addEventListener('load', function () {
+            navigator.serviceWorker.register('service-worker.js')
+                .then(function (registration) {
+                    console.log('Service worker registered:', registration);
+                })
+                .catch(function (error) {
+                    console.log('Service worker registration failed:', error);
+                });
+        });
+    }
+}
+
 accessKeyElement.innerHTML = getAccessKey();
+
+pwa();
